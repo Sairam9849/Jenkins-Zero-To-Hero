@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: todoapp-pod
+spec:
+  containers:
+  - name: todoapp
+    image: your-docker-repo/todoapp:latest
+    ports:
+    - containerPort: 8000

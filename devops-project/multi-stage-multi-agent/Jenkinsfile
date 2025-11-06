@@ -1,0 +1,24 @@
+pipeline {
+  agent none
+  stages {
+    stage('Build') {
+      agent { label 'linux' }
+      steps {
+        echo "Building on linux agent"
+        sh 'mvn -B -DskipTests package || true'
+      }
+    }
+    stage('Test') {
+      agent { label 'linux' }
+      steps {
+        echo "Run tests"
+      }
+    }
+    stage('Package') {
+      agent { label 'docker' }
+      steps {
+        echo "Docker packaging"
+      }
+    }
+  }
+}

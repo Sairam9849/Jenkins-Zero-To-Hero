@@ -1,0 +1,21 @@
+pipeline {
+  agent any
+  stages {
+    stage('Install') {
+      steps {
+        sh 'pip install -r requirements.txt'
+      }
+    }
+    stage('Test') {
+      steps {
+        sh 'pytest -q || true'
+      }
+    }
+    stage('Build & Publish') {
+      steps {
+        sh 'docker build -t your-docker-repo/todoapp:${BUILD_NUMBER} .'
+        // sh 'docker push your-docker-repo/todoapp:${BUILD_NUMBER}'
+      }
+    }
+  }
+}

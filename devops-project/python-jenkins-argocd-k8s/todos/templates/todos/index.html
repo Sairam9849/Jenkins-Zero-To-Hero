@@ -1,0 +1,15 @@
+{% extends "todos/base.html" %}
+{% block content %}
+  <h1>Todo List</h1>
+  <form action="{% url 'add' %}" method="post">{% csrf_token %}
+    <input name="title" placeholder="New todo" required>
+    <button type="submit">Add</button>
+  </form>
+  <ul>
+    {% for t in todos %}
+      <li>{{ t.title }} - {% if t.done %}Done{% else %}Pending{% endif %}</li>
+    {% empty %}
+      <li>No todos yet</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

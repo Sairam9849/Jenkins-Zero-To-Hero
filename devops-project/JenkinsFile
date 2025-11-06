@@ -1,0 +1,21 @@
+pipeline {
+  agent any
+  environment {
+    IMAGE = "your-docker-repo/spring-boot-app:${env.BUILD_NUMBER}"
+  }
+  stages {
+    stage('Build') {
+      steps {
+        sh 'mvn -B -DskipTests package'
+      }
+    }
+    stage('Docker Build & Push') {
+      steps {
+        sh "docker build -t ${IMAGE} ."
+        // replace with your docker login/push steps or use credentials binding
+        sh "docker tag ${IMAGE} your-docker-repo/spring-boot-app:latest || true"
+        // sh "docker push ${IMAGE}"
+      }
+    }
+  }
+}
