@@ -1,8 +1,15 @@
-stage('Build') {
-    steps {
-        dir('java-maven-sonar-argocd-helm-k8s/spring-boot-app') {
-            sh 'mvn clean package'
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                dir('java-maven-sonar-argocd-helm-k8s/spring-boot-app') {
+                    sh 'mvn clean package'
+                }
+            }
         }
     }
 }
+
+
 
