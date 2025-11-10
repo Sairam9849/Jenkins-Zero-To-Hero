@@ -1,5 +1,5 @@
-echo "<project xmlns='http://maven.apache.org/POM/4.0.0' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
-  xsi:schemaLocation='http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd'>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.example</groupId>
@@ -14,7 +14,7 @@ echo "<project xmlns='http://maven.apache.org/POM/4.0.0' xmlns:xsi='http://www.w
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>2.7.5</version>
-    <relativePath/> 
+    <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
   <dependencies>
@@ -30,7 +30,4 @@ echo "<project xmlns='http://maven.apache.org/POM/4.0.0' xmlns:xsi='http://www.w
     <java.version>11</java.version>
   </properties>
 
-</project>" > pom.xml
-
-
-
+</project>
