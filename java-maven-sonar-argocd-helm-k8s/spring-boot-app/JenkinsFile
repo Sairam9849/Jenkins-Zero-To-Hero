@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                dir('java-maven-sonar-argocd-helm-k8s/spring-boot-app') {
+                    sh 'mvn clean package'
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                // Add deployment steps here
+            }
+        }
+    }
+}
+
+Save this in java-maven-sonar-argocd-helm-k8s/spring-boot-app/Jenkinsfile in your repo.
+
+Alternatively, use this script in Jenkins "Pipeline" job:
+
+node {
+    stage('Checkout') {
+        git 'https://github.com/Sairam9849/Jenkins-Zero-To-Hero.git'
+    }
+    stage('Build') {
+        dir('java-maven-sonar-argocd-helm-k8s/spring-boot-app') {
+            sh 'mvn clean package'
+        }
+    }
+}
